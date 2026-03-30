@@ -1,0 +1,31 @@
+[package]
+name = "contact-management"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# Axum: web framework for routing and HTTP handling
+axum = { version = "0.7", features = ["json"] }
+
+# Tokio: async runtime required by Axum and SeaORM
+tokio = { version = "1", features = ["full"] }
+
+# Serde: JSON serialization/deserialization
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# SeaORM: async ORM for PostgreSQL
+# - "sqlx-postgres" selects the PostgreSQL backend via sqlx
+# - "runtime-tokio-rustls" uses Tokio runtime + rustls for TLS
+# - "macros" enables #[derive(DeriveEntityModel)]
+sea-orm = { version = "0.12", features = [
+    "sqlx-postgres",
+    "runtime-tokio-rustls",
+    "macros",
+] }
+
+# Thiserror: ergonomic error enum derive macros
+thiserror = "1"
+
+# dotenvy: loads .env file into environment variables at startup
+dotenvy = "0.15"
